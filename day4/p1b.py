@@ -1,10 +1,6 @@
-import re
 from collections import Counter
 
-
 if __name__ == '__main__':
-    regex = r"Card.*(?P<cardno>\d+):\s+(?P<cscores>.*)"
-    cards = []
     pscards = Counter()
     data = open("/Users/ddak/work/Advent-of-Code-2023/day4/input.txt", encoding="UTF-8").read().split('\n')
     for idx, card in enumerate(data):
