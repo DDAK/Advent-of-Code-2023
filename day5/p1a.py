@@ -39,11 +39,14 @@ def build_map(data):
 def traverse_map(seed, locs, maps):
     next_value = int(seed)
     for v in locs:
-        next_value = maps[v].get(next_value,next_value)
+        for a,b in maps[v].items():
+            if a[0]<=next_value and next_value<=a[1]: 
+                next_value = b[0]+(next_value-a[0])
+                break
     return next_value
 
 if __name__ == '__main__':
-    data = open("/Users/ddak/work/Advent-of-Code-2023/day5/input1.txt", encoding="UTF-8").read().split('\n')
+    data = open("/Users/ddak/work/Advent-of-Code-2023/day5/input.txt", encoding="UTF-8").read().split('\n')
     seeds, locs, maps = build_map(data)
     locations = [traverse_map(seed, locs, maps) for seed in seeds]
 
